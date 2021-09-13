@@ -19,3 +19,5 @@ int main()
 	waitKey(0);
 	return 0;
 }
+	![image](https://user-images.githubusercontent.com/90375458/133044904-b9147c98-73fe-4218-8776-a10b19dbe0e4.png)
+
