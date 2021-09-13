@@ -1,20 +1,24 @@
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <string>
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 using namespace cv;
 using namespace std;
+Mat img;
 int main()
 {
-	int height = 520;
-	int width = 840;
-	Mat img(height, width, CV_8UC3);
-	Point textOrg(100, img.rows / 2);
-	//int fontFace = FONT_HERSHEY_PLAIN;
-	double fontScale = 2;
-	Scalar color(200, 100, 50);
-	//putText(img, "OpenCV Step By Step", textOrg, FONT_HERSHEY_PLAIN, fontScale, color);
-	namedWindow("Hello World", 0);
-	imshow("Hello World", img);
+	setlocale(LC_ALL, "Russian");
+	char filename[80]; // 123.jpg
+	cout << "Введите имя файла, в который хотите внести изменения, и нажмите Enter" << endl;
+	cin.getline(filename, 80);
+	cout << "Открыт файл";
+	cout << filename << endl;
+	Mat img = imread(filename, 1);
+	namedWindow("Исходное изображение", WINDOW_AUTOSIZE);
+	imshow("Исходное изображение", img);
 	waitKey(0);
-	return 0;
+	return(0);
+
+
 }
