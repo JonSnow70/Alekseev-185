@@ -21,6 +21,7 @@ int main()
 	namedWindow("Серое изображение", WINDOW_AUTOSIZE);
 	imshow("Серое изображение", canny_output);
 	imwrite("canny_output.jpg", canny_output);
+
 	waitKey(0);
 	system("pause");
 	return(0);
