@@ -19,8 +19,8 @@ int main()
 	blur(src_gray, src_gray, Size(3, 3));
 	double lower_thresh_val = 100, high_thresh_val = 300;
 	Canny(src_gray, canny_output, lower_thresh_val, high_thresh_val, 3);
-	//namedWindow("Серое изображение", WINDOW_AUTOSIZE);
-	//imshow("Серое изображение", canny_output);
+	//namedWindow("РЎРµСЂРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ", WINDOW_AUTOSIZE);
+	//imshow("РЎРµСЂРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ", canny_output);
 	imwrite("canny_output.jpg", canny_output);
 	RNG rng(12345);
 	vector<vector<Point>>contours;
@@ -38,9 +38,17 @@ int main()
 	}
 	for (int i = 0; i, contours.size(); i++)
 	{
-		printf("Контур № %d: центр масс-x=%.2f y=%.2f; длина-%.2f\n", i,
+		printf("РљРѕРЅС‚СѓСЂ в„– %d: С†РµРЅС‚СЂ РјР°СЃСЃ-x=%.2f y=%.2f; РґР»РёРЅР°-%.2f\n", i,
 			mu[i].m10 / mu[i].m00, mu[i].m01 / mu[i].m00, arcLength(contours[i], true));
 	}
+	Mat drawing = Mat::zeros(canny_output.size(), CV_8UC3); // CV_8UC3 - РёР·РѕР±СЂР°Р¶РµРЅРёРµ Р±РµР· Р·РЅР°РєР° СЃ 3 РєР°РЅР°Р»Р°РјРё
+	for (int i = 0; i < contours.size(); i++) {
+		Scalar color = Scalar(rng.uniform(0, 225), rng.uniform(0, 225), rng.uniform(0, 225));
+		drawContours(drawing, contours, i, color,2, 8, hierachy, 0, Point());
+		circle(drawing, mc[i], 4, color, -1, 5, 0);
+	}
+	namedWindow("РљРѕРЅС‚СѓСЂС‹", WINDOW_AUTOSIZE);
+	imshow("РљРѕРЅС‚СѓСЂС‹", drawing);
 
 	waitKey(0);
 	system("pause");
