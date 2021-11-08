@@ -3,8 +3,8 @@
 #include <iostream>// Объявляет объекты, управляющие чтением из стандартных потоков и записью в них. Это, как правило, единственный заголовок, необходимый для ввода и вывода из программы на C++.
 #include <stdio.h>// стандартный заголовочный файл ввода-вывода
 #include <stdlib.h>// аголовочный файл стандартной библиотеки языка Си, который содержит в себе функции, занимающиеся выделением памяти, контролем процесса выполнения программы, преобразованием типов и другие	
-using namespace cv;
-using namespace std;
+using namespace cv;// пространство имён opencv
+using namespace std; //пространство имён C++
 Mat img;
 int main()
 {
@@ -42,31 +42,34 @@ int main()
 	blur(src_gray, src_gray, Size(3, 3)); // размытие
 	/*double otsu_thresh_val = threshold(src_gray, img, 0, 255, THRESH_BINARY | THRESH_OTSU);*/
 	/*double high_thresh_val = otsu_thresh_val, lower_thresh_val = otsu_thresh_val * 0.5;*/
-	/*cout << otsu_thresh_val;*/
+	/*cout << otsu_thresh_val;*/// threshold должны определить пороги автоматически
 	double lower_thresh_val=100, high_thresh_val= 300; // нижний и верхний порог, нижний отвечает за шумы изображения, если задать много верхнего, то будет просто черное изображение
 	Canny(src_gray, canny_output,lower_thresh_val, high_thresh_val, 3); // оператор обнаружения границ изображения
 	/*char* source_grey_window = "Серое изображение";*/
 	namedWindow("Серое изображение", WINDOW_AUTOSIZE);
 	imshow("Серое изображение", canny_output);
-	imwrite("canny_output.jpg", canny_output);
+	imwrite("canny_output.jpg", canny_output);// оператор canny хранится в изображении canny_output
 	
 	     // Моменты и центр масс findContours
 		RNG rng(12345); // генератор случайных чисел
 		vector<vector<Point>>contours; // вектор
 		vector<Vec4i>hierarchy; 
+	// передаём наше изображение canny_output, найденные контуры записываем vector Contours. иерархия определяется параметрами RETR_TREE
 		findContours(canny_output, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0)); // нахождение контуров ,RETR_EXTERNAL - удаляет внутренние контуры  ,CHAIN_APPROX_SIMPLE - нужен для экономии памяти: если линия, то хранит только точки начала и конца.
 		vector<Moments>mu(contours.size());
+	// нахождение моментов контуров
 		for (int i = 0; i < contours.size(); i++)
 		{
 			mu[i] = moments(contours[i], false);
 		}
 
 		vector <Point2f>mc(contours.size());
+	// нахождение центра масс по формуле первый (точки по x и y) момент делим на нулевой ( все точки в контуре)
 		for (int i = 0; i < contours.size(); i++)
 		{
 			mc[i] = Point2f(mu[i].m10 / mu[i].m00, mu[i].m01 / mu[i].m00);
 		}
-		
+		// выводим в консоль
 		for (int i = 0; i < contours.size(); i++)
 		{
 			printf("Контур № %d: центр масс - x = %.2f y=%.2f; длина - %.2f\n", i, mu[i].m10 / mu[i].m00, mu[i].m01 / mu[i].m00, arcLength(contours[i], true));
