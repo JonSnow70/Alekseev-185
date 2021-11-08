@@ -1,4 +1,6 @@
 # Alekseev-185 OpenCV
+Долги смотреть по ссылке: https://docs.google.com/spreadsheets/d/1sigaZ8M5s8NZi94R4XTTjXNyr5V21q39nhIfr9-Se8U/edit#gid=67700862
+
 Создание папки: add fale create new name/USE CASE
 Работа с изображением
 Фотография 1: инструкция по установке opencv в проект visual studio
