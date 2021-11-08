@@ -80,7 +80,7 @@ int main()
 		{
 			Scalar color = Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255)); //Тип Scalar широко используется в OpenCV для передачи значений пикселей, цвет
 			drawContours(drawing, contours, i, color, 2, 8, hierarchy, 0, Point()); //Полученные с помощью функции findContours контуры хорошо бы каким-то образом нарисовать в кадре. Машине это не нужно, зато нам это поможет лучше понять как выглядят найденные алгоритмом контуры. Поможет в этом ещё одна полезная функция — drawContours.
-			circle(drawing, mc[i], 4, color, -1, 5, 0);
+			circle(drawing, mc[i], 4, color, -1, 5, 0); // риусет круг в центре контура
 		}
 		namedWindow("Контуры", WINDOW_AUTOSIZE);
 		imshow("Контуры", drawing);
