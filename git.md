@@ -1,0 +1,5 @@
+$ git push https://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@github.com/JonSnow70/Alekseev-185.git отправлеям с комп. на рипотозиторий, токен возможно придётся создавать через настройки)
+$ git commit -m "213"(фиксируем изменения с сообщением)
+$ git add .(добавляем все файлы)
+$ cd Alekseev-185/(заходим в папку)
+$ git clone https://github.com/JonSnow70/Alekseev-185.git ( копируем гит с ритропозитория на компьютер)
