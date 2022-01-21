@@ -1,4 +1,6 @@
 # Alekseev-185 OpenCV
+https://github.com/Julia-Zhirnova/Python_voice-.git
+
 Долги смотреть по ссылке: https://docs.google.com/spreadsheets/d/1sigaZ8M5s8NZi94R4XTTjXNyr5V21q39nhIfr9-Se8U/edit#gid=67700862
 
 Создание папки: add fale create new name/USE CASE
