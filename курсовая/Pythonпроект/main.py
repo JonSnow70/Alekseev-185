@@ -8,12 +8,14 @@ def listen_command():
     # obtain audio from the microphone
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Say something!")
+        print("Скажите вашу команду:")
         audio = r.listen(source)
 
     # recognize speech using Google Speech Recognition
     try:
-        return r.recognize_google(audio, language="ru")
+        our_speech = r.recognize_google(audio, language="ru")
+        print("Вы сказали:"+our_speech)
+        return our_speech
     except sr.UnknownValueError:
         return "ошибка"
     except sr.RequestError:
