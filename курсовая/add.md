@@ -6,4 +6,4 @@ https://stackoverflow.com/questions/49223985/errors-installing-pyaudio-failed-bu
 ![image](https://user-images.githubusercontent.com/90375458/149278916-0e6b5e68-1bae-4451-8d8d-d9ef46d4c702.png)
 ![image](https://user-images.githubusercontent.com/90375458/149280837-a80af582-1173-4d26-b96f-6e0a4bc0341d.png)
 ![image](https://user-images.githubusercontent.com/90375458/149482191-9310d405-49ad-4e8a-a5bd-b975ee3111f9.png)
-
+https://www.lfd.uci.edu/~gohlke/pythonlibs/
